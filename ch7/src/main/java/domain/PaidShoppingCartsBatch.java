@@ -1,26 +1,25 @@
 package domain;
 
 import ports.DeliveryCenter;
-import ports.EmailService;
+import ports.CustomerNotifier;
 import ports.SAP;
 import ports.ShoppingCartRepository;
 
 import java.time.LocalDate;
-import java.util.Calendar;
 import java.util.List;
 
 public class PaidShoppingCartsBatch {
 
     private ShoppingCartRepository db;
     private DeliveryCenter deliveryCenter;
-    private EmailService mail;
+    private CustomerNotifier notifier;
     private SAP sap;
 
     public PaidShoppingCartsBatch(ShoppingCartRepository db, DeliveryCenter deliveryCenter,
-                                  EmailService mail, SAP sap) {
+                                  CustomerNotifier notifier, SAP sap) {
         this.db = db;
         this.deliveryCenter = deliveryCenter;
-        this.mail = mail;
+        this.notifier = notifier;
         this.sap = sap;
     }
 
@@ -37,7 +36,7 @@ public class PaidShoppingCartsBatch {
             db.persist(cart);
 
             // send e-mail
-            mail.sendEstimatedDeliveryEmail(cart);
+            notifier.sendEstimatedDeliveryNotification(cart);
 
             // notify SAP
             sap.cartReadyForDelivery(cart);

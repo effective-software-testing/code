@@ -7,13 +7,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ports.DeliveryCenter;
-import ports.EmailService;
+import ports.CustomerNotifier;
 import ports.SAP;
 import ports.ShoppingCartRepository;
 
 import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.Calendar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
@@ -24,12 +23,12 @@ public class PaidShoppingCartsBatchTest {
     @Mock
     ShoppingCartRepository db;
     @Mock private DeliveryCenter deliveryCenter;
-    @Mock private EmailService email;
+    @Mock private CustomerNotifier notifier;
     @Mock private SAP sap;
 
     @Test
     void happyPath() {
-        PaidShoppingCartsBatch batch = new PaidShoppingCartsBatch(db, deliveryCenter, email, sap);
+        PaidShoppingCartsBatch batch = new PaidShoppingCartsBatch(db, deliveryCenter, notifier, sap);
 
         ShoppingCart someCart = new ShoppingCart(100);
         assertThat(someCart.isReadyForDelivery()).isFalse();
@@ -41,7 +40,7 @@ public class PaidShoppingCartsBatchTest {
         batch.processAll();
 
         verify(deliveryCenter).deliver(someCart);
-        verify(email).sendEstimatedDeliveryEmail(someCart);
+        verify(notifier).sendEstimatedDeliveryNotification(someCart);
         verify(db).persist(someCart);
         verify(sap).cartReadyForDelivery(someCart);
         assertThat(someCart.isReadyForDelivery()).isTrue();

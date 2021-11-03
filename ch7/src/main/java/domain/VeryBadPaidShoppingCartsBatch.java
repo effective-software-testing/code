@@ -3,11 +3,10 @@ package domain;
 
 import adapters.DeliveryCenterRestApi;
 import adapters.SAPSoapWebService;
-import adapters.SMTPEmailSender;
+import adapters.SMTPCustomerNotifier;
 import adapters.ShoppingCartHibernateDao;
 
 import java.time.LocalDate;
-import java.util.Calendar;
 import java.util.List;
 
 public class VeryBadPaidShoppingCartsBatch {
@@ -30,10 +29,10 @@ public class VeryBadPaidShoppingCartsBatch {
             cart.markAsReadyForDelivery(estimatedDayOfDelivery);
             db.persist(cart);
 
-            // send e-mail using the adapter directly
+            // send notification using the adapter directly
             // Bad for testability!
-            SMTPEmailSender mail = new SMTPEmailSender();
-            mail.sendEstimatedDeliveryEmail(cart);
+            SMTPCustomerNotifier notifier = new SMTPCustomerNotifier();
+            notifier.sendEstimatedDeliveryNotification(cart);
 
             // notify SAP using the adapter directly
             // Bad for testability!
