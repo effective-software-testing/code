@@ -16,7 +16,7 @@ public class PlanningPokerTest {
     @Test
     void rejectNullInput() {
         assertThatThrownBy(() -> new PlanningPoker().identifyExtremes(null))
-                .isInstanceOf(AssertionError.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -24,7 +24,7 @@ public class PlanningPokerTest {
         assertThatThrownBy(() -> {
             List<Estimate> emptyList = Collections.emptyList();
             new PlanningPoker().identifyExtremes(emptyList);
-        }).isInstanceOf(AssertionError.class);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -32,7 +32,7 @@ public class PlanningPokerTest {
         assertThatThrownBy(() -> {
             List<Estimate> list = Collections.singletonList(new Estimate("Eleanor", 1));
             new PlanningPoker().identifyExtremes(list);
-        }).isInstanceOf(AssertionError.class);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

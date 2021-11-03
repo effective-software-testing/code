@@ -7,8 +7,14 @@ public class PlanningPoker {
 
     public List<String> identifyExtremes(List<Estimate> estimates) {
 
-        assert estimates != null;
-        assert estimates.size() > 1;
+        // these checks could have been assertions.
+        // we will discuss more about it in the design-by-contract chapter
+        if(estimates == null) {
+            throw new IllegalArgumentException("Estimates can't be null");
+        }
+        if(estimates.size() <= 1) {
+            throw new IllegalArgumentException("There has to be more than 1 estimate in the list");
+        }
 
         Estimate lowestEstimate = null;
         Estimate highestEstimate = null;
