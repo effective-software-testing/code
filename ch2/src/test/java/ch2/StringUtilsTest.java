@@ -55,4 +55,10 @@ public class StringUtilsTest {
     void noSubstringBetweenOpenAndCloseTags() {
         assertThat(substringsBetween("aabb", "aa", "bb")).isEqualTo(new String[] {""});
     }
+
+    @Test
+    void closeTagAppearingMultipleTimes() {
+        assertThat(substringsBetween("aabcddaabeddaab", "aa", "d")).isEqualTo(new String[] {"bc", "be"});
+        assertThat(substringsBetween("aabcddabeddaab", "aa", "d")).isEqualTo(new String[] {"bc"});
+    }
 }
