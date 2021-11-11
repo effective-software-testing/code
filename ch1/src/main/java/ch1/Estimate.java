@@ -1,5 +1,7 @@
 package ch1;
 
+import java.util.Objects;
+
 public class Estimate {
 
     private final String developer;
@@ -24,5 +26,18 @@ public class Estimate {
                 "developer='" + developer + '\'' +
                 ", estimate=" + estimate +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Estimate estimate1 = (Estimate) o;
+        return estimate == estimate1.estimate && Objects.equals(developer, estimate1.developer);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(developer, estimate);
     }
 }

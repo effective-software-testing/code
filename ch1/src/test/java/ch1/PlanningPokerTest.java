@@ -104,4 +104,19 @@ public class PlanningPokerTest {
                 .containsExactlyInAnyOrder("Mauricio", "Arie");
     }
 
+    @Test
+    void allDevelopersWithTheSameEstimate() {
+        List<Estimate> list = Arrays.asList(
+                new Estimate("Mauricio", 10),
+        new Estimate("Arie", 10),
+                new Estimate("Andy", 10),
+                new Estimate("Frank", 10),
+                new Estimate("Annibale", 10)
+  );
+        List<String> devs = new PlanningPoker().identifyExtremes(list);
+
+        assertThat(devs).isEmpty();
+
+    }
+
 }

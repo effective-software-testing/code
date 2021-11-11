@@ -1,14 +1,13 @@
 package ch1;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class PlanningPoker {
 
     public List<String> identifyExtremes(List<Estimate> estimates) {
 
-        // these checks could have been assertions.
-        // we will discuss more about it in the design-by-contract chapter
         if(estimates == null) {
             throw new IllegalArgumentException("Estimates can't be null");
         }
@@ -29,6 +28,9 @@ public class PlanningPoker {
                 lowestEstimate = estimate;
             }
         }
+
+        if(lowestEstimate.equals(highestEstimate))
+            return Collections.emptyList();
 
         return Arrays.asList(
                 lowestEstimate.getDeveloper(),
