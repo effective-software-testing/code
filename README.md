@@ -1,5 +1,7 @@
 # Effective software testing
 
+![example workflow](https://github.com/effective-software-testing/code/actions/workflows/tests.yml/badge.svg)
+
 This repository contains the code examples of the _Effective Software Testing: A Guide to Engineering High-Quality Tests_ book, by [Maurício Aniche](https://www.mauricioaniche.com).
 
 Each folder contains the code examples of their respective chapter:
