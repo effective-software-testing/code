@@ -23,6 +23,12 @@ To run code coverage in chapter 3, go to the ch3 folder and type `mvn clean test
 
 To run the web tests of chapter 9, you first should run the [Spring PetClinic](https://github.com/spring-projects/spring-petclinic) application. For convenience, we provide a compiled jar here. To run the web app, just go to the ch9 folder and type `java -jar *.jar`.
 
+## Contributing to PRs
+
+Maybe you found a test I missed or a better way to implement the code. You are most welcome to submit your PRs! 
+
+If you do so, I ask you to create another file, with the same name as the original plus some suffix, and add a comment explaining what you did there. I do not want to touch the original files as they match with the code snippets in the book; we do not want readers to get lost.
+
 ## License and reuse
 
 You are free to reuse and modify the code provided in this repository, for personal or business purposes, as long as the book is always explicitly mentioned as reference. For example, if you are providing training or workshops, you are required to have a dedicated slide with the picture of the book in each of the slide decks that make use of examples from here.
