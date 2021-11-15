@@ -23,7 +23,7 @@ public class TaxCalculator {
 
         // post-condition check
         if(taxValue < 0) {
-            throw new RuntimeException("Value has to be positive");
+            throw new RuntimeException("Calculated tax cannot be negative");
         }
 
         return taxValue;
