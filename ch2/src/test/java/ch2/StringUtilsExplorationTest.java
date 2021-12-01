@@ -22,7 +22,7 @@ public class StringUtilsExplorationTest {
     }
 
     @Test
-    void openAndCloseTagsThatAreLonger() {
+    void openAndCloseTagsThatAreLongerThan1Char() {
         assertThat(StringUtils.substringsBetween("aabcddaabfddaab", "aa", "dd"))
                 .isEqualTo(new String[] { "bc", "bf" });
     }
