@@ -23,8 +23,8 @@ public class StringUtilsExplorationTest {
 
     @Test
     void openAndCloseTagsThatAreLonger() {
-        assertThat(StringUtils.substringsBetween("aabcddaabcddaab", "aa", "d"))
-                .isEqualTo(new String[] { "bc", "bc" });
+        assertThat(StringUtils.substringsBetween("aabcddaabfddaab", "aa", "dd"))
+                .isEqualTo(new String[] { "bc", "bf" });
     }
 
 }
