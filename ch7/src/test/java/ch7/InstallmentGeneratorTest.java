@@ -36,13 +36,14 @@ public class InstallmentGeneratorTest {
 
         // get all the Installments that were passed to the repository
         verify(repository,times(10)).persist(captor.capture());
+
         List<Installment> allInstallments = captor.getAllValues();
 
         // now, we assert that the installments are correct
         // all  them should have a value of 10.0
         assertThat(allInstallments)
                 .hasSize(10)
-                .allMatch(i -> i.getValue() == 10);
+                .allMatch(i -> i.getValue() == 10.0d);
 
         // they should have to be one month apart
         for(int month = 1; month <= 10; month++) {
@@ -50,6 +51,9 @@ public class InstallmentGeneratorTest {
             assertThat(allInstallments)
                     .anyMatch(i -> i.getDate().equals(dueDate));
         }
+
+
+
     }
 
     @Test
@@ -64,7 +68,7 @@ public class InstallmentGeneratorTest {
         // all  them should have a value of 10.0
         assertThat(allInstallments)
                 .hasSize(10)
-                .allMatch(i -> i.getValue() == 10);
+                .allMatch(i -> i.getValue() == 10d);
 
         // they should have to be one month apart
         for(int month = 1; month <= 10; month++) {
@@ -72,5 +76,7 @@ public class InstallmentGeneratorTest {
             assertThat(allInstallments)
                     .anyMatch(i -> i.getDate().equals(dueDate));
         }
+
+
     }
 }
