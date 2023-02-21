@@ -67,8 +67,8 @@ public class PlanningPokerTest {
     @Property
     void estimatesInAnyOrder(@ForAll("estimates") List<Estimate> estimates) {
 
-        estimates.add(new Estimate("MrLowEstimate", 1));
-        estimates.add(new Estimate("MsHighEstimate", 100));
+        estimates.add(new Estimate("MrLowEstimate - ", 1));
+        estimates.add(new Estimate("MsHighEstimate - ", 100));
         Collections.shuffle(estimates);
 
         List<String> dev = new PlanningPoker().identifyExtremes(estimates);
