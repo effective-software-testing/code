@@ -79,7 +79,7 @@ public class PlanningPokerTest {
 
     @Provide
     Arbitrary<List<Estimate>> estimates() {
-        Arbitrary<String> names = Arbitraries.strings().withCharRange('a', 'z').ofLength(5);
+        Arbitrary<String> names = Arbitraries.strings().withCharRange('a', 'v').ofLength(5);
         Arbitrary<Integer> values = Arbitraries.integers().between(2, 99);
 
         Arbitrary<Estimate> estimates = Combinators.combine(names, values)

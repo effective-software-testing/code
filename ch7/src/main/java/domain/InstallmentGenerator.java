@@ -14,7 +14,7 @@ public class InstallmentGenerator {
 
     public void generateInstallments(ShoppingCart cart, int numberOfInstallments) {
         // create a variable that will store the last installment date
-        LocalDate nextInstallmentDueDate = LocalDate.now();
+
 
         // calculate the amount per installment
         double amountPerInstallment = cart.getValue() / numberOfInstallments;
@@ -22,7 +22,7 @@ public class InstallmentGenerator {
         // create a sequence of installments, one month apart from each other
         for(int i = 1; i <= numberOfInstallments; i++) {
             // +1 to the month
-            nextInstallmentDueDate = nextInstallmentDueDate.plusMonths(1);
+            LocalDate nextInstallmentDueDate =  LocalDate.now().plusMonths(i);
 
             // create and persist the installment
             Installment newInstallment = new Installment(nextInstallmentDueDate, amountPerInstallment);
@@ -35,7 +35,7 @@ public class InstallmentGenerator {
         List<Installment> generatedInstallments = new ArrayList<Installment>();
 
         // create a variable that will store the last installment date
-        LocalDate nextInstallmentDueDate = LocalDate.now();
+
 
         // calculate the amount per installment
         double amountPerInstallment = cart.getValue() / numberOfInstallments;
@@ -43,7 +43,7 @@ public class InstallmentGenerator {
         // create a sequence of installments, one month apart from each other
         for(int i = 1; i <= numberOfInstallments; i++) {
             // +1 to the month
-            nextInstallmentDueDate = nextInstallmentDueDate.plusMonths(1);
+            LocalDate nextInstallmentDueDate =  LocalDate.now().plusMonths(i);
 
             // create and persist the installment
             Installment newInstallment = new Installment(nextInstallmentDueDate, amountPerInstallment);
